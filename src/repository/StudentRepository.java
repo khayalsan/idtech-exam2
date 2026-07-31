@@ -2,35 +2,29 @@ package repository;
 
 import entity.Student;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class StudentRepository implements Repository<Student, Long> {
 
-
-
-	@Override
-	public Optional<Student> getById(Object key) {
-		return Optional.empty();
-	}
-
+	private final Map<Long, Student> students = new HashMap<>();
 	@Override
 	public void add(Student student) {
-
+		students.put(student.getId(), student);
 	}
 
 	@Override
 	public void remove(Long key) {
-
+		students.remove(key);
 	}
 
 	@Override
 	public Optional<Student> getById(Long key) {
-		return Optional.empty();
+		var student = students.get(key);
+		return Optional.ofNullable(student);
 	}
 
 	@Override
 	public List<Student> getAll() {
-		return List.of();
+		return new ArrayList<>(students.values());
 	}
 }

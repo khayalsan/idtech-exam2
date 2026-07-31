@@ -1,27 +1,45 @@
 package service;
 
 import entity.Student;
+import repository.StudentRepository;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Comparator;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.TreeSet;
 
 public class StudenService {
-	private final Map<Long, Student> students = new HashMap<>();
-	//          will be replaced
+	private final StudentRepository repository = new StudentRepository();
 	public void addStudent(Student student) {
-		students.put(student.getId(), student);
+		repository.add(student);
 	}
 
 	public Optional<Student> findStudentById(Long id) {
-		return Optional.empty();
+		return repository.getById(id);
 	}
 
 	public Student findTopStudent() {
-		return null;
+		Comparator<Student> comparator = new Comparator<Student>() {
+			@Override
+			public int compare(Student o1, Student o2) {
+				var score1 = o1.calculateAverageScore();
+				var score2 = o2.calculateAverageScore();
+				if (Objects.equals(score1, score2)) return 0;
+				else if (score1 < score2) return -1;
+				else return 1;
+			}
+		};
+		TreeSet<Student> sortedSet = new TreeSet<>(comparator);
+
+		sortedSet.addAll(repository.getAll());
+
+		return sortedSet.stream().findFirst().orElse(null);
 	}
 	public void printStudentsWithStatus() {
-
+		var students = repository.getAll();
+		students.forEach(student -> {
+			final var status = student.isPassed() ? "PASS" : "FAIL";
+			System.out.println(student.getName() + " - " + status);
+		});
 	}
 }

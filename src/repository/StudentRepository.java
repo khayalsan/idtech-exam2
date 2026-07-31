@@ -10,8 +10,7 @@ public class StudentRepository implements Repository<Student, Integer> {
 	private Integer id = 0;
 	@Override
 	public void add(Student student) {
-		student.setId(this.id);
-		students.put(id++, student);
+		students.put(id, new Student(id++, student.getName()));
 	}
 
 	@Override

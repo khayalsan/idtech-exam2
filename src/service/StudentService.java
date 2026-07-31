@@ -3,10 +3,7 @@ package service;
 import entity.Student;
 import repository.StudentRepository;
 
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.TreeSet;
+import java.util.*;
 
 public class StudentService {
 	private final StudentRepository repository = new StudentRepository();
@@ -14,8 +11,12 @@ public class StudentService {
 		repository.add(student);
 	}
 
-	public Optional<Student> findStudentById(Long id) {
+	public Optional<Student> findStudentById(Integer id) {
 		return repository.getById(id);
+	}
+
+	public List<Student> getAllStudents() {
+		return repository.getAll();
 	}
 
 	public Student findTopStudent() {

@@ -4,22 +4,22 @@ import entity.Student;
 
 import java.util.*;
 
-public class StudentRepository implements Repository<Student, Long> {
+public class StudentRepository implements Repository<Student, Integer> {
 
-	private final Map<Long, Student> students = new HashMap<>();
+	private final Map<Integer, Student> students = new HashMap<>();
 	@Override
 	public void add(Student student) {
 		students.put(student.getId(), student);
 	}
 
 	@Override
-	public void remove(Long key) {
-		students.remove(key);
+	public void remove(Integer id) {
+		students.remove(id);
 	}
 
 	@Override
-	public Optional<Student> getById(Long key) {
-		var student = students.get(key);
+	public Optional<Student> getById(Integer id) {
+		var student = students.get(id);
 		return Optional.ofNullable(student);
 	}
 

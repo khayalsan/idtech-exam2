@@ -1,5 +1,8 @@
+import entity.Exam;
+import entity.Student;
 import service.StudentService;
 
+import java.util.Optional;
 import java.util.Scanner;
 
 public class Main {
@@ -47,13 +50,13 @@ public class Main {
 					int studentId = scanner.nextInt();
 					scanner.nextLine();
 
-					Student student = service.findStudentById(studentId);
+					Optional<Student> studentBoxed = service.findStudentById(studentId);
 
-					if (student == null) {
+					if (studentBoxed.isEmpty()) {
 						System.out.println("Student not found.");
 						break;
 					}
-
+					var student = studentBoxed.get();
 					System.out.print("Subject: ");
 					String subject = scanner.nextLine();
 
@@ -77,7 +80,7 @@ public class Main {
 
 				case 3:
 
-					for (Student s : service.getStudents()) {
+					for (Student s : service.getAllStudents()) {
 						System.out.println("----------------------");
 						System.out.println(s);
 					}

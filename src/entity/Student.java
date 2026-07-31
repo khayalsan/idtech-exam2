@@ -3,7 +3,7 @@ package entity;
 import java.util.List;
 
 public class Student {
-	private Long id;
+	private Integer id;
 	private String name;
 	private List<Exam> exams;
 
@@ -39,7 +39,7 @@ public class Student {
 				"Status = " + isPassed();
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 	public String getName() {

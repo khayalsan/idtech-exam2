@@ -4,6 +4,11 @@ public class Exam {
 	private String subject;
 	private Double score;
 
+	public Exam(String subject, double score) {
+		this.subject = subject;
+		this.score = score;
+	}
+
 	public boolean isPassed() {
 		return score >= 50;
 	}
@@ -11,10 +16,6 @@ public class Exam {
 		return score;
 	}
 	public void setScore(Double score) {
-		if (score >= 0.0 && score <= 100.0) {
-			this.score = score;
-			return;
-		}
-		System.out.println("Score needs to be between 0 and 100");
+		this.score = score;
 	}
 }

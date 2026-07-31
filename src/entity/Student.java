@@ -35,4 +35,8 @@ public class Student {
 				"Average score = " + calculateAverageScore() +
 				"Status = " + isPassed();
 	}
+
+	public Long getId() {
+		return id;
+	}
 }

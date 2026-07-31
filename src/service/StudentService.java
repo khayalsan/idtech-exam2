@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.TreeSet;
 
-public class StudenService {
+public class StudentService {
 	private final StudentRepository repository = new StudentRepository();
 	public void addStudent(Student student) {
 		repository.add(student);
@@ -33,7 +33,10 @@ public class StudenService {
 
 		sortedSet.addAll(repository.getAll());
 
-		return sortedSet.stream().findFirst().orElse(null);
+		var topStudent = sortedSet.stream().findFirst().orElse(null);
+
+		if (topStudent == null || !topStudent.hasAtLeastOneExam()) return null;
+		else return topStudent;
 	}
 	public void printStudentsWithStatus() {
 		var students = repository.getAll();

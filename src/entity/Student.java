@@ -10,6 +10,9 @@ public class Student {
 	public void addExam(Exam exam) {
 		exams.add(exam);
 	}
+	public Boolean hasAtLeastOneExam() {
+		return !exams.isEmpty();
+	}
 	public Double calculateAverageScore() {
 		if (exams.isEmpty()) return 0.0;
 		Double sum = exams.stream().map((Exam::getScore)).reduce(0.0, Double::sum);

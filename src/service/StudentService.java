@@ -26,8 +26,8 @@ public class StudentService {
 				var score1 = o1.calculateAverageScore();
 				var score2 = o2.calculateAverageScore();
 				if (Objects.equals(score1, score2)) return 0;
-				else if (score1 < score2) return -1;
-				else return 1;
+				else if (score1 < score2) return 1;
+				else return -1;
 			}
 		};
 		TreeSet<Student> sortedSet = new TreeSet<>(comparator);

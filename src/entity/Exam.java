@@ -18,4 +18,12 @@ public class Exam {
 	public void setScore(Double score) {
 		this.score = score;
 	}
+
+	@Override
+	public String toString() {
+		return "Exam{" +
+				"subject='" + subject + '\'' +
+				", score=" + score +
+				'}';
+	}
 }

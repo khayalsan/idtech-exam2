@@ -1,11 +1,17 @@
 package entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Student {
 	private Integer id;
 	private String name;
-	private List<Exam> exams;
+	private final List<Exam> exams = new ArrayList<Exam>();
+
+	public Student(int id, String name) {
+		this.id = id;
+		this.name = name;
+	}
 
 	public void addExam(Exam exam) {
 		exams.add(exam);
@@ -32,11 +38,11 @@ public class Student {
 	@Override
 	public String toString() {
 		return "Student " +
-				"ID =" + id +
-				", Name ='" + name + '\'' +
+				"ID = " + id +
+				", Name  ='" + name + '\'' +
 				", Exams =" + exams +
-				"Average score = " + calculateAverageScore() +
-				"Status = " + isPassed();
+				", Average score = " + calculateAverageScore() +
+				", Status = " + isPassed();
 	}
 
 	public Integer getId() {

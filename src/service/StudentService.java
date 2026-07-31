@@ -42,8 +42,8 @@ public class StudentService {
 	public void printStudentsWithStatus() {
 		var students = repository.getAll();
 		students.forEach(student -> {
-			final var status = student.isPassed() ? "PASS" : "FAIL";
-			System.out.println(student.getName() + " - " + status);
+
+			System.out.println(student.getName() + " - " + student.getStatus());
 		});
 	}
 }

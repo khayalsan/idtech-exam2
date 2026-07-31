@@ -1,5 +1,7 @@
 package entity;
 
+import enums.Status;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +37,9 @@ public class Student {
 		return calculateAverageScore() >= 60.0 && hasPassedAllExams();
 	}
 
+	public Status getStatus() {
+		return isPassed() ? Status.PASS : Status.FAIL;
+	}
 	@Override
 	public String toString() {
 		return "Student " +
@@ -42,7 +47,7 @@ public class Student {
 				", Name  ='" + name + '\'' +
 				", Exams =" + exams +
 				", Average score = " + calculateAverageScore() +
-				", Status = " + isPassed();
+				", Status = " + getStatus();
 	}
 
 	public Integer getId() {

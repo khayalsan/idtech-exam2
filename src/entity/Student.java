@@ -19,6 +19,20 @@ public class Student {
 		if (exams.isEmpty()) return false;
 		var failedExamBoxed = exams.stream().filter((exam -> !exam.isPassed())).findFirst();
 		return failedExamBoxed.isEmpty();
-		};
+
+	}
+
+	public Boolean isPassed() {
+		return calculateAverageScore() >= 60.0 && hasPassedAllExams();
+	}
+
+	@Override
+	public String toString() {
+		return "Student " +
+				"ID =" + id +
+				", Name ='" + name + '\'' +
+				", Exams =" + exams +
+				"Average score = " + calculateAverageScore() +
+				"Status = " + isPassed();
 	}
 }

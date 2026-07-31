@@ -31,15 +31,10 @@ public class Main {
 			switch (choice) {
 
 				case 1:
-
-					System.out.print("Student ID: ");
-					int id = scanner.nextInt();
-					scanner.nextLine();
-
 					System.out.print("Student name: ");
 					String name = scanner.nextLine();
 
-					service.addStudent(new Student(id, name));
+					service.addStudent(new Student(name));
 
 					System.out.println("Student added.");
 					break;

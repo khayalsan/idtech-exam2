@@ -6,12 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Student {
-	private Integer id;
+	private final Integer id;
 	private String name;
 	private final List<Exam> exams = new ArrayList<Exam>();
 
-	public Student(int id, String name) {
-		this.id = id;
+	public Student(String name) {
 		this.name = name;
 	}
 
@@ -55,5 +54,8 @@ public class Student {
 	}
 	public String getName() {
 		return name;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 }

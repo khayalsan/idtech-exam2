@@ -6,10 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Student {
-	private final Integer id;
+	private Integer id;
 	private String name;
 	private final List<Exam> exams = new ArrayList<Exam>();
 
+	public Student(Integer id, String name) {
+		this.id = id;
+		this.name = name;
+	}
 	public Student(String name) {
 		this.name = name;
 	}
@@ -54,8 +58,5 @@ public class Student {
 	}
 	public String getName() {
 		return name;
-	}
-	public void setId(Integer id) {
-		this.id = id;
 	}
 }

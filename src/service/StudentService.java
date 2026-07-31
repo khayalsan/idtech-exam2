@@ -20,15 +20,12 @@ public class StudentService {
 	}
 
 	public Student findTopStudent() {
-		Comparator<Student> comparator = new Comparator<Student>() {
-			@Override
-			public int compare(Student o1, Student o2) {
-				var score1 = o1.calculateAverageScore();
-				var score2 = o2.calculateAverageScore();
-				if (Objects.equals(score1, score2)) return 0;
-				else if (score1 < score2) return 1;
-				else return -1;
-			}
+		Comparator<Student> comparator = (o1, o2) -> {
+			var score1 = o1.calculateAverageScore();
+			var score2 = o2.calculateAverageScore();
+			if (Objects.equals(score1, score2)) return 0;
+			else if (score1 < score2) return 1;
+			else return -1;
 		};
 		TreeSet<Student> sortedSet = new TreeSet<>(comparator);
 

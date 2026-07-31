@@ -1,6 +1,6 @@
 package enums;
 
-public enum Status {
+public enum ExamStatus {
 	PASS,
 	FAIL
 }
